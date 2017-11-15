@@ -13,6 +13,14 @@ public class Application {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Hibernate");
 		EntityManager em = entityManagerFactory.createEntityManager();
 
+		em.getTransaction().begin();
+		Product product1 = new Product(1, "Productnaam", "Dit is de product omschrijving");
+		Baas baas1 = new Baas(0, "Steef", "Gitaar");
+		em.persist(product1);
+		em.persist(baas1);
+		em.getTransaction().commit();
+
+	
 
 		Baas b = em.find(Baas.class, 1);
 	
